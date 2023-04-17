@@ -4,6 +4,7 @@ import time
 import psutil
 import pandas as pd
 import numpy as np
+import os
 
 def get_wechat_pid():
     pids = psutil.pids()
@@ -69,3 +70,4 @@ def match():
 
 if __name__ == '__main__':
     match()
+    os.system('pause')
