@@ -18,8 +18,8 @@ def get_wechat_pid():
 def get_name_list(pid):
     print('>>> WeChat.exe pid: {}'.format(pid))
     print('>>> 请打开【微信=>目标群聊=>聊天成员=>查看更多】，尤其是【查看更多】，否则查找不全！')
-    for i in range(10):
-        print('\r({} 秒)'.format(10 - i), end='')
+    for i in range(20):
+        print('\r({:2d} 秒)'.format(10 - i), end='')
         time.sleep(1)
     app = Application(backend='uia').connect(process=pid)
     win_main_Dialog = app.window(class_name='WeChatMainWndForPC')
@@ -45,7 +45,7 @@ def match():
     try:
         member_list = get_name_list(pid)
     except pywinauto.findwindows.ElementNotFoundError as e:
-        print('>>> 未找到【聊天成员】窗口，程序终止！')
+        print('\r>>> 未找到【聊天成员】窗口，程序终止！')
         print('>>> 若已开启【聊天成员】窗口但仍报错，请重启微信（原因：可能存在多个WeChat进程）')
         return
     mode = ''
